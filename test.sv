@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-import TestRegestry_pkg::*;
+import TestRegistry_pkg::*;
 
 program automatic test;
    TestBase tb;
@@ -8,6 +7,3 @@ program automatic test;
       tb.run_test();
    end
 endprogram
-=======
-
->>>>>>> b44d08880321384c029e62905bfbbde93a7828b7
