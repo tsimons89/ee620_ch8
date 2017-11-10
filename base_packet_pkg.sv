@@ -6,9 +6,9 @@ package base_packet_pkg;
       static int count;	//	Number	of	instance	created
       int id;	//	Unique	transaction	id
       function new();
-	 id = count++;	//	Give	each	object	a	unique	ID
-	 header = new();
-	 data = new();
+		 id = count++;	//	Give	each	object	a	unique	ID
+		 header = new();
+		 data = new();
       endfunction	//	new
       
       pure virtual function base_packet copy();
