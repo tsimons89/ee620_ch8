@@ -1,4 +1,4 @@
-package Driver_cbs_sb_pkg;
+package Driver_cbs_scb_pkg;
    import Packet_pkg::*;
    import Driver_cbs_pkg::*;
 virtual class Driver_cbs;

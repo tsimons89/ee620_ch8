@@ -15,7 +15,7 @@
 
 package scoreboard_pkg;
 
-   import packet_pkg::*;
+   import Packet_pkg::*;
    
    // Parameterized class to do compare
 class comparator #(type T=bit[3:0]);

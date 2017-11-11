@@ -1,8 +1,9 @@
-import TestRegistry_pkg::*;
-class Test_v3 extends TestBase;
+import Test_registry_pkg::*;
+import Driver_cbs_v3::*;
+class Test_v3 extends Test_base;
    function new();
       env = new();
-      TestRegistry::register("Test_v3",this);
+      Test_registry::register("Test_v3",this);
    endfunction // new
 
    virtual task run_test();

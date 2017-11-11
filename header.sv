@@ -1,5 +1,5 @@
-package header_pkg;
-class header;
+package Header_pkg;
+class Header;
    const int unsigned VERSION = 4;
    const int unsigned IHL = 5;
    const int unsigned TOTAL_LENGTH = 28;

@@ -1,5 +1,5 @@
-package PacketBad_pkg;
+package Packet_bad_pkg;
    import Packet_pkg;
-class PacketBad extends Packet;
+class Packet_bad extends Packet;
 endclass
 endpackage

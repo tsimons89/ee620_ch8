@@ -1,9 +1,9 @@
-import TestRegistry_pkg::*;
+import Test_registry_pkg::*;
 
 program automatic test;
-   TestBase tb;
+   Test_base tb;
    initial begin
-      tb = TestRegistry::get_test();
+      tb = Test_registry::get_test();
       tb.run_test();
    end
 endprogram

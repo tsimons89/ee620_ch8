@@ -1,9 +1,9 @@
 package packet_pkg;
+   import Packet_base_pkg::*;
+   import Header_pkg::*;
+   import Payload_pkg::*;
    
-   import header_class_pkg::*;
-   import data_class_pkg::*;
-   
-class Packet extends base_packet;
+class Packet extends Packet_base;
 
    function new();
       super.new();
@@ -12,7 +12,7 @@ class Packet extends base_packet;
    function Packet copy();
       copy = new this;
       copy.header = header.copy();
-      copy.data = data.copy();
+      copy.payload = payload.copy();
    endfunction // copy
    
    function void display();

@@ -1,8 +1,8 @@
-import TestRegistry_pkg::*;
-class TestBad extends TestBase;
+import Test_registry_pkg::*;
+class Test_bad extends Test_base;
    function new();
       env = new();
-      TestRegistry::register("TestBad",this);
+      Test_registry::register("Test_bad",this);
    endfunction // new
 
    virtual task run_test();
@@ -10,13 +10,13 @@ class TestBad extends TestBase;
       env.gen_config();
       env.build();
       begin
-	 PacketBad bad = new();
+	 Packet_bad bad = new();
 	 env.gen.blueprint = bad;
       end
       env.run();
       env.wrap_up();
    endtask
-endclass // TestBad
+endclass // Test_bad
 
-TestBad TestBad_handel = new();
+Test_bad Test_bad_handel = new();
 

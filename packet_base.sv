@@ -1,7 +1,10 @@
-package base_packet_pkg;
-   virtual class base_packet;
-      rand header_class header;
-      rand data_class data;
+package Packet_base_pkg;
+   import Header_pkg::*;
+   import Payload_pkg::*;
+   
+   virtual class Packet_base;
+      rand Header header;
+      rand Payload payload;
       
       static int count;	//	Number	of	instance	created
       int id;	//	Unique	transaction	id
@@ -11,7 +14,7 @@ package base_packet_pkg;
 		 data = new();
       endfunction	//	new
       
-      pure virtual function base_packet copy();
+      pure virtual function Packet_base copy();
       pure virtual function void display();
       pure virtual function void calc_header_checksum();
    endclass

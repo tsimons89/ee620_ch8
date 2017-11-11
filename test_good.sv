@@ -1,8 +1,8 @@
-import TestRegistry_pkg::*;
-class TestGood extends TestBase;
+import Test_registry_pkg::*;
+class Test_good extends Test_base;
    function new();
       env = new();
-      TestRegistry::register("TestGood",this);
+      Test_registry::register("Test_good",this);
    endfunction // new
 
    virtual task run_test();
@@ -12,7 +12,7 @@ class TestGood extends TestBase;
       env.run();
       env.wrap_up();
    endtask
-endclass // TestGood
+endclass // Test_good
 
-TestGood TestGood_handel = new();
+Test_good Test_good_handel = new();
 
