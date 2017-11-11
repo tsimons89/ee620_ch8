@@ -1,6 +1,6 @@
-package driver_cbs_pkg;
+package Driver_cbs_pkg;
    import packet_pkg::*;
-virtual class driver_cbs;
+virtual class Driver_cbs;
    
    virtual task pre_tx(ref packet tr, ref bit drop);
    endtask

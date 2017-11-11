@@ -31,6 +31,9 @@ endclass
    // and defines the compare_expected function.
 class Scoreboard;
    static int num_compared = 0;
+   const int unsigned VERSION = 4;
+   const int unsigned IHL = 5;
+   const int unsigned TOTAL_LENGTH = 28;
    comparator #(bit [3:0]) compare_4bit;
    comparator #(bit [7:0]) compare_8bit;
    comparator #(bit [15:0]) compare_16bit; 

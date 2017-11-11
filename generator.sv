@@ -16,7 +16,7 @@ class Generator;
       this.gen2drv = gen2drv;
    endfunction 
 
-   task run(int num_packets = 1000);
+   task run(int num_packets = 100);
       repeat(num_packets) begin
 	 `SV_RAND_CHECK(blueprint.randomize);
 	 gen2dvr.put(blueprint.copy());
