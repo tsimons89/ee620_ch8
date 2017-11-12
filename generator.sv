@@ -18,9 +18,10 @@ class Generator;
       blueprint = new();
    endfunction 
 
+   
    task run(int num_packets = 100);
+      `SV_RAND_CHECK(blueprint.randomize());
       repeat(num_packets) begin
-	 `SV_RAND_CHECK(blueprint.randomize());
 	 gen2drv.put(blueprint.cpy());
       end
    endtask

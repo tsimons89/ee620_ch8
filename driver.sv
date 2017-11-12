@@ -16,14 +16,15 @@ class Driver;
 	 gen2drv.peek(p);
 	 foreach(cbs[i]) begin
 	    cbs[i].pre_tx(p);
-	    transmit();
+	    transmit(p);
 	    cbs[i].post_tx(p);
 	 end
 	 gen2drv.get(p);
       end
    endtask // run
 
-   task transmit();
+   task transmit(Packet p);
+      p.calc_header_checksum();
       #10ns;
    endtask
 

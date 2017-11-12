@@ -12,11 +12,9 @@ package Driver_cbs_v3_pkg;
    import Packet_pkg::*;
 class Driver_cbs_v3 extends Driver_cbs;
 
-   task other_t(Packet p);
-      p.display();
-   endtask
    task pre_tx(ref Packet p);
-      `SV_RAND_CHECK(p.randomize() with {header.version dist {4:=99,3:=1};});
+      p.header.constraint_mode(0);
+      `SV_RAND_CHECK(p.header.randomize(version) with {version dist {3:=1,4:=99};});
    endtask
 
 endclass

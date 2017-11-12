@@ -45,7 +45,19 @@ class Header;
    endfunction // display
 
    function Header copy();
-      copy = new this;
+      // copy = new();
+      copy = new();
+      copy.version = version;
+      copy.ihl = ihl;
+      copy.type_of_service = type_of_service;
+      copy.time_to_live = time_to_live;
+      copy.protocol = protocol;
+      copy.total_length = total_length;
+      copy.identification = identification;
+      copy.flags = flags;
+      copy.fragment_offset = fragment_offset;
+      copy.source_ip_address = source_ip_address;
+      copy.destination_ip_address = destination_ip_address;
    endfunction
    
 endclass

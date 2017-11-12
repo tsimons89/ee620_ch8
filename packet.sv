@@ -10,13 +10,14 @@ class Packet extends Packet_base;
    endfunction	//	new
    
    function Packet_base copy();
-      copy = new this;
+      copy = new();
       copy.header = header.copy();
       copy.payload = payload.copy();
    endfunction // copy
 
-   function Packet cpy();
-      cpy = new this;
+   virtual function Packet cpy();
+      cpy = new();
+      cpy.id = id;
       cpy.header = header.copy();
       cpy.payload = payload.copy();
    endfunction // copy
@@ -28,6 +29,7 @@ class Packet extends Packet_base;
    endfunction // display
    
    virtual function void calc_header_checksum();
+      // $display("Base check sum");
       header.calc_header_checksum();
    endfunction
 endclass

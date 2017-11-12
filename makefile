@@ -15,8 +15,8 @@
 ##
 ############################################################################
 PACKET_FILES = header.sv payload.sv packet_base.sv packet.sv packet_bad.sv
-DRIVER_FILES = driver_cbs.sv driver_cbs_v3.sv driver_cbs_scb.sv driver.sv
-ENV_FILES = scoreboard.sv generator.sv environment.sv 
+DRIVER_FILES = scoreboard.sv driver_cbs.sv driver_cbs_v3.sv driver_cbs_scb.sv driver.sv
+ENV_FILES =  generator.sv environment.sv 
 TEST_FILES = test_base.sv test_reg.sv test_good.sv test_bad.sv test_v3.sv  test.sv
 VERILOG_FILES = ${PACKET_FILES} ${DRIVER_FILES} ${ENV_FILES} ${TEST_FILES} top.sv	
 TOPLEVEL = top

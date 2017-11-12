@@ -1,3 +1,12 @@
+`define SV_RAND_CHECK(r) \
+  do begin \
+    if (!(r)) begin \
+      $display("%s:%0d: Randomization failed \"%s\"", \
+               `__FILE__, `__LINE__, `"r`"); \
+      $finish; \
+    end \
+  end while (0)
+    
 package Environment_pkg;
    import Scoreboard_pkg::*;
    import Packet_pkg::*;
@@ -18,15 +27,15 @@ class Environment;
    Driver drv;
    Config cfg;
    Scoreboard scb;
-   
+
    function void build();
       // initialize mailbox
-      gen2drv = new();
+      gen2drv = new(1);
       
       // initialize transactors
-      gen     = new(gen2drv);
-      drv     = new(gen2drv);
-      scb     = new();
+      gen = new(gen2drv);
+      drv = new(gen2drv);
+      scb = new();
    endfunction
    
    task run();
@@ -34,7 +43,13 @@ class Environment;
 	 gen.run(cfg.run_for_n_trans);
 	 drv.run(cfg.run_for_n_trans);
       join
-   endtask
+   endtask // run
+
+   function void gen_cfg();
+      cfg = new();
+      `SV_RAND_CHECK(cfg.randomize());
+      $display("cfg.run_for: %p",cfg.run_for_n_trans);
+   endfunction
    
    task wrap_up();
       // fork
