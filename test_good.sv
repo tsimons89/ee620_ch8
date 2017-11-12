@@ -1,4 +1,6 @@
-import Test_registry_pkg::*;
+package Test_good_pkg;
+   import Test_registry_pkg::*;
+   import Test_base_pkg::*;
 class Test_good extends Test_base;
    function new();
       env = new();
@@ -7,12 +9,9 @@ class Test_good extends Test_base;
 
    virtual task run_test();
       $display("%m");
-      env.gen_config();
       env.build();
       env.run();
       env.wrap_up();
    endtask
 endclass // Test_good
-
-Test_good Test_good_handel = new();
-
+endpackage

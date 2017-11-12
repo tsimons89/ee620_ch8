@@ -46,7 +46,7 @@ class Scoreboard;
    endfunction // new
 
    // Compare the expected values of the version, ihl, total length, and the header checksum
-   function void compare_expected(input packet pkt);
+   function void compare_expected(input Packet pkt);
       num_compared++;
       compare_4bit.compare("version", pkt.header.version, VERSION);
       compare_4bit.compare("ihl", pkt.header.ihl, IHL);
@@ -56,7 +56,7 @@ class Scoreboard;
 
    // Calculate the expected header checksum.  Needs to be independent of the calc_header_checksum
    // function in the packet class as to not replicate bugs.
-   function bit[15:0] calc_header_checksum(input packet pkt);
+   function bit[15:0] calc_header_checksum(input Packet pkt);
       calc_header_checksum = {pkt.header.version, pkt.header.ihl, pkt.header.type_of_service} ^ 
 			     pkt.header.total_length  ^ pkt.header.identification ^ 
 			     {pkt.header.flags, pkt.header.fragment_offset} ^ {pkt.header.time_to_live, pkt.header.protocol} ^ 

@@ -1,12 +1,12 @@
-package Driver_pkg::*;
+package Driver_pkg;
    import Packet_pkg::*;
    import Driver_cbs_pkg::*;
    import Packet_pkg::*;
 class Driver;
-   mailbox #(Packet) gen2dvr;
+   mailbox #(Packet) gen2drv;
    Driver_cbs cbs[$];
 
-   function new(mailbox #(Packet) gen2dvr)
+   function new(mailbox #(Packet) gen2drv);
      this.gen2drv = gen2drv;
    endfunction // new
 

@@ -1,4 +1,4 @@
-package packet_pkg;
+package Packet_pkg;
    import Packet_base_pkg::*;
    import Header_pkg::*;
    import Payload_pkg::*;
@@ -9,18 +9,25 @@ class Packet extends Packet_base;
       super.new();
    endfunction	//	new
    
-   function Packet copy();
+   function Packet_base copy();
       copy = new this;
       copy.header = header.copy();
       copy.payload = payload.copy();
    endfunction // copy
+
+   function Packet cpy();
+      cpy = new this;
+      cpy.header = header.copy();
+      cpy.payload = payload.copy();
+   endfunction // copy
    
    function void display();
+      $display("Contents of packet:");
       header.display();
-      data.display();
+      payload.display();
    endfunction // display
    
-   function void calc_header_checksum();
+   virtual function void calc_header_checksum();
       header.calc_header_checksum();
    endfunction
 endclass

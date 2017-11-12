@@ -8,13 +8,15 @@
   end while (0)
 
 package Driver_cbs_v3_pkg;
-   import packet_pkg::*;
    import Driver_cbs_pkg::*;
-   
-virtual class Driver_cbs_v3;
-   
-   virtual task pre_tx(ref Packet p, ref bit drop);
-      `SV_RAND_CHECK(p.randomize() with {version dist {4:=4,3:=1};})
+   import Packet_pkg::*;
+class Driver_cbs_v3 extends Driver_cbs;
+
+   task other_t(Packet p);
+      p.display();
+   endtask
+   task pre_tx(ref Packet p);
+      `SV_RAND_CHECK(p.randomize() with {header.version dist {4:=99,3:=1};});
    endtask
 
 endclass

@@ -1,4 +1,7 @@
-import Test_registry_pkg::*;
+package Test_bad_pkg;
+   import Test_registry_pkg::*;
+   import Test_base_pkg::*;
+   import Packet_bad_pkg::*;
 class Test_bad extends Test_base;
    function new();
       env = new();
@@ -7,7 +10,6 @@ class Test_bad extends Test_base;
 
    virtual task run_test();
       $display("%m");
-      env.gen_config();
       env.build();
       begin
 	 Packet_bad bad = new();
@@ -17,6 +19,5 @@ class Test_bad extends Test_base;
       env.wrap_up();
    endtask
 endclass // Test_bad
-
-Test_bad Test_bad_handel = new();
+endpackage
 

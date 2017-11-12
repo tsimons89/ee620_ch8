@@ -11,7 +11,7 @@ package Packet_base_pkg;
       function new();
 		 id = count++;	//	Give	each	object	a	unique	ID
 		 header = new();
-		 data = new();
+		 payload = new();
       endfunction	//	new
       
       pure virtual function Packet_base copy();

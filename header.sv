@@ -8,13 +8,13 @@ class Header;
    rand bit [15:0] total_length,identification;
    rand bit [2:0] flags;
    rand bit [12:0] fragment_offset;
-   rand bit [31:0] source_ip_address,destination_address;
+   rand bit [31:0] source_ip_address,destination_ip_address;
    bit [15:0] header_checksum;
 
    constraint c {
       version == VERSION;
       ihl == IHL;
-      total_length = TOTAL_LENGTH;
+      total_length == TOTAL_LENGTH;
       flags[0] == 0;
    }
 
@@ -42,6 +42,10 @@ class Header;
       $display("Header Checksum: %h",header_checksum);
       $display("Source IP Address: %h",source_ip_address);
       $display("Destination IP Address: %h",destination_ip_address);
+   endfunction // display
+
+   function Header copy();
+      copy = new this;
    endfunction
    
 endclass
