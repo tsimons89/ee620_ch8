@@ -52,11 +52,7 @@ class Environment;
    endfunction
    
    task wrap_up();
-      // fork
-      // 	 gen.wrap_up();
-      // 	 drv.wrap_up();
-      // 	 scb.wrap_up();
-      // join
+      $display("Number of packets compared: %0d", scb.num_compared);
    endtask
 endclass : Environment
 

@@ -8,6 +8,7 @@
   end while (0)
 
 package Packet_bad_pkg;
+   import Packet_base_pkg::*;
    import Packet_pkg::*;
 class Packet_bad extends Packet;
 
@@ -15,19 +16,23 @@ class Packet_bad extends Packet;
    
    function new();
       super.new();
-      $display("Bad const");
    endfunction // new
 
+   function Packet_base copy();
+      Packet_bad pkt = new();
+      pkt.bad = bad;
+      pkt.id = id;
+      pkt.header = header.copy();
+      pkt.payload = payload.copy();
+      return pkt;
+   endfunction // copy
+
    constraint bad_packet{
-      bad dist {0:=1,1:=1};
+      bad dist {0:=49,1:=1};
    }
 
    virtual function void calc_header_checksum();
-      $display("Bad checksum");
-      header.calc_header_checksum();
-      $display("bad before: %p",bad);
-      `SV_RAND_CHECK(this.randomize(bad));
-      $display("bad after: %p",bad);
+      super.calc_header_checksum();
       if(bad)
 	header.header_checksum = ~header.header_checksum;
    endfunction // calc_header_checksum

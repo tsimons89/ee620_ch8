@@ -9,7 +9,7 @@ class Packet extends Packet_base;
       super.new();
    endfunction	//	new
    
-   function Packet_base copy();
+   virtual function Packet_base copy();
       Packet pkt = new();
       pkt.id = id;
       pkt.header = header.copy();

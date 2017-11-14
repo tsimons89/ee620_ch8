@@ -9,6 +9,7 @@
     
 package Generator_pkg;
    import Packet_pkg::*;
+   import Packet_bad_pkg::*;
    import Packet_base_pkg::*;
 class Generator;
    mailbox #(Packet) gen2drv;
@@ -21,11 +22,14 @@ class Generator;
 
    
    task run(int num_packets = 100);
-      `SV_RAND_CHECK(blueprint.randomize());
+      Packet_bad bad;
+      if($cast(bad,blueprint))
+	$display("Found a bad");
       repeat(num_packets) begin
 	 Packet_base pb_copy = blueprint.copy();
 	 Packet pkt_copy;
 	 $cast(pkt_copy,pb_copy);
+	 `SV_RAND_CHECK(pkt_copy.randomize());
 	 gen2drv.put(pkt_copy);
       end
    endtask
