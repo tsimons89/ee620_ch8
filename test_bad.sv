@@ -17,6 +17,7 @@ class Test_bad extends Test_base;
 	 Packet_bad bad = new();
 	 Driver_cbs_scb dcs = new(env.scb);
 	 env.gen.blueprint = bad;
+	 $display("set bad to blueprint");
 	 env.drv.cbs.push_back(dcs);
       end
       env.run();

@@ -8,7 +8,8 @@
   end while (0)
     
 package Generator_pkg;
-   import Packet_pkg::*;   
+   import Packet_pkg::*;
+   import Packet_base_pkg::*;
 class Generator;
    mailbox #(Packet) gen2drv;
    Packet blueprint;
@@ -22,7 +23,10 @@ class Generator;
    task run(int num_packets = 100);
       `SV_RAND_CHECK(blueprint.randomize());
       repeat(num_packets) begin
-	 gen2drv.put(blueprint.cpy());
+	 Packet_base pb_copy = blueprint.copy();
+	 Packet pkt_copy;
+	 $cast(pkt_copy,pb_copy);
+	 gen2drv.put(pkt_copy);
       end
    endtask
 endclass // Generator

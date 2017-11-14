@@ -23,6 +23,7 @@ class Packet_bad extends Packet;
    }
 
    virtual function void calc_header_checksum();
+      $display("Bad checksum");
       header.calc_header_checksum();
       $display("bad before: %p",bad);
       `SV_RAND_CHECK(this.randomize(bad));
