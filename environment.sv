@@ -48,7 +48,6 @@ class Environment;
    function void gen_cfg();
       cfg = new();
       `SV_RAND_CHECK(cfg.randomize());
-      $display("cfg.run_for: %p",cfg.run_for_n_trans);
    endfunction
    
    task wrap_up();

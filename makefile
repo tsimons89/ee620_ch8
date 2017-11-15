@@ -43,17 +43,16 @@ simv:   ${VERILOG_FILES} clean
 
 #############################################################################
 # Questa section
-questa_gui: 
-	vlib work
-	vmap work work
-	vlog ${VERILOG_FILES}
+questa_gui: work
 	vsim +TESTNAME=${TESTNAME} -novopt -classdebug -t ns -do "view wave;do wave.do;run -all" ${TOPLEVEL}
 
-questa_batch: ${VERILOG_FILES} clean
+questa_batch: work
+	vsim +TESTNAME=${TESTNAME} -c -novopt -t ns -do "run -all" ${TOPLEVEL}
+
+work: ${VERILOG_FILES}
 	vlib work
 	vmap work work
 	vlog ${VERILOG_FILES} 
-	vsim +TESTNAME=${TESTNAME} -c -novopt -t ns -do "run -all" ${TOPLEVEL} 
 
 #############################################################################
 # Housekeeping

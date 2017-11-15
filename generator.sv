@@ -22,15 +22,12 @@ class Generator;
 
    
    task run(int num_packets = 100);
-      Packet_bad bad;
-      if($cast(bad,blueprint))
-	$display("Found a bad");
       repeat(num_packets) begin
-	 Packet_base pb_copy = blueprint.copy();
-	 Packet pkt_copy;
-	 $cast(pkt_copy,pb_copy);
-	 `SV_RAND_CHECK(pkt_copy.randomize());
-	 gen2drv.put(pkt_copy);
+	 Packet blueprint_copy;
+	 `SV_RAND_CHECK(blueprint.randomize());
+	 if(!$cast(blueprint_copy,blueprint.copy()))
+	   $display("Error in casting blueprint to Packet class");
+	 gen2drv.put(blueprint_copy);
       end
    endtask
 endclass // Generator
